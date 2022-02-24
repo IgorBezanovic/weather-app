@@ -4,10 +4,12 @@ const weatherForm = document.querySelector("form");
 const searchLocation = document.querySelector("input");
 const errorMessage = document.getElementById("error-message");
 const messageText = document.getElementById("message")
+const loadingText = document.getElementById("loadingText")
 const locationText = document.getElementById("location")
 const uv_index = document.getElementById("uv_index")
 const weather_img = document.getElementById("weather_img")
 const visibility = document.getElementById("visibility")
+const infoBlock = document.getElementById("info-block")
 
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -18,9 +20,10 @@ weatherForm.addEventListener("submit", (e) => {
   uv_index.textContent = '';
   visibility.textContent = '';
   weather_img.style.display = 'none'
+  infoBlock.style.display = 'none'
 
   if (!location) return errorMessage.textContent = 'You must enter location...';
-  messageText.textContent = "Loading..."
+  loadingText.textContent = "Loading..."
   
   fetch(`/weather?address=${location}`).then(
     (response) => {
@@ -28,6 +31,8 @@ weatherForm.addEventListener("submit", (e) => {
         messageText.textContent = '';
         if (data.error) return errorMessage.textContent = data.error;
 
+        loadingText.textContent = '';
+        infoBlock.style.display = 'block'
         locationText.textContent = data.location
         messageText.textContent = `It is currently ${data.forecast.temperature} degrees out`
         if(data.forecast.uv_index > 0 && data.forecast.uv_index <= 2 ){

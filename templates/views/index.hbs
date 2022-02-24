@@ -15,9 +15,15 @@
             <input type="text" placeholder="Enter location">
             <button type="submit">Submit</button>
         </form>
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 30px; background-color: lightgray; border-radius: 15px; padding: 15px;">
             <p id="error-message" style="color: red;"></p>
-            <p id="message"></p>
+            <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                <img src="" alt="weather img" id="weather_img" style="display: none; width: 50px; margin-right: 25px">
+                <p id="location"></p>
+            </div>
+            <p id="message" style="margin-bottom: 10px;"></p>
+            <p id="visibility" style="margin-bottom: 10px;"></p>
+            <p id="uv_index" style="margin-bottom: 10px;"></p>
         </div>
         <p>*** dodati dodatne informacije, verovatnoca za padavine, oblacnost, maglovitost, subjektivni osecaj, weather img</p>
      </div>

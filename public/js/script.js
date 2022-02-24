@@ -10,6 +10,7 @@ const uv_index = document.getElementById("uv_index")
 const weather_img = document.getElementById("weather_img")
 const visibility = document.getElementById("visibility")
 const infoBlock = document.getElementById("info-block")
+const wind_speed = document.getElementById("wind_speed")
 
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -19,6 +20,7 @@ weatherForm.addEventListener("submit", (e) => {
   locationText.textContent = '';
   uv_index.textContent = '';
   visibility.textContent = '';
+  wind_speed.textContent = '';
   weather_img.style.display = 'none'
   infoBlock.style.display = 'none'
 
@@ -48,6 +50,7 @@ weatherForm.addEventListener("submit", (e) => {
         }
         uv_index.textContent = `UV index is: ${data.forecast.uv_index}`;
         visibility.textContent = `Visibility is: ${data.forecast.visibility}km`;
+        wind_speed.textContent = `Wind speed is: ${data.forecast.wind_speed}km/h`;
         weather_img.src = data.forecast.image
         weather_img.style.display = 'block'
       });
